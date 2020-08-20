@@ -37,8 +37,8 @@ def doc_to_synsets(doc):
     for (token, tag) in token_tags_combination:
         try:
             synset = m.wn.synset('{}.{}.01'.format(token, tag))
-        except e:
-            print("Fucking bitch error")
+        except:
+            pass
         else:
             synsets.append(synset)
 
