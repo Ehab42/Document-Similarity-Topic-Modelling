@@ -2,6 +2,7 @@ import numpy as np
 import nltk
 from nltk.corpus import wordnet as wn
 import pandas as pd
+from doc-to-syns import do
 
 
 def convert_tag(tag):
@@ -14,13 +15,13 @@ def convert_tag(tag):
         return None
 
 
-# def document_path_similarity(doc1, doc2):
-#     """Finds the symmetrical similarity between doc1 and doc2"""
+def document_path_similarity(doc1, doc2):
+    """Finds the symmetrical similarity between doc1 and doc2"""
 
-#     synsets1 = doc_to_synsets(doc1)
-#     synsets2 = doc_to_synsets(doc2)
+    synsets1 = doc_to_synsets(doc1)
+    synsets2 = doc_to_synsets(doc2)
 
-#     return (similarity_score(synsets1, synsets2) + similarity_score(synsets2, synsets1)) / 2
+    return (similarity_score(synsets1, synsets2) + similarity_score(synsets2, synsets1)) / 2
 
 
 # # test_document_path_similarity
