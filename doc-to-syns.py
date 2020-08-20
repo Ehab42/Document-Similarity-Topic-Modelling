@@ -1,4 +1,4 @@
-import main as m
+from main import convert_tag, nltk, wn
 
 
 def doc_to_synsets(doc):
@@ -21,11 +21,11 @@ def doc_to_synsets(doc):
     """
 
     # First: tokenize the document
-    tokens = m.nltk.word_tokenize(doc)
+    tokens = nltk.word_tokenize(doc)
 
     # Second: Part of speech tag the document
-    tags = m.nltk.pos_tag(tokens)
-    tags_converted = [m.convert_tag(tag[1]) for tag in tags]
+    tags = nltk.pos_tag(tokens)
+    tags_converted = [convert_tag(tag[1]) for tag in tags]
 
     # Combine both tokens and tags
     token_tags_combination = zip(tokens, tags_converted)
@@ -36,7 +36,7 @@ def doc_to_synsets(doc):
     synsets = []
     for (token, tag) in token_tags_combination:
         try:
-            synset = m.wn.synset('{}.{}.01'.format(token, tag))
+            synset = wn.synset('{}.{}.01'.format(token, tag))
         except:
             pass
         else:
