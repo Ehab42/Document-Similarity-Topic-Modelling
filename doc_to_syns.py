@@ -1,4 +1,15 @@
-from main import nltk, convert_tag, wn
+import nltk
+from nltk.corpus import wordnet as wn
+
+
+def convert_tag(tag):
+    """Convert the tag given by nltk.pos_tag to the tag used by wordnet.synsets"""
+
+    tag_dict = {'N': 'n', 'J': 'a', 'R': 'r', 'V': 'v'}
+    try:
+        return tag_dict[tag[0]]
+    except KeyError:
+        return None
 
 
 def doc_to_synsets(doc):
