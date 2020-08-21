@@ -15,3 +15,25 @@ You will need to finish writing the following functions:
 Once `doc_to_synsets` and `similarity_score` have been completed, submit to the autograder which will run `test_document_path_similarity` to test that these functions are running correctly. 
 
 *Do not modify the functions `convert_tag`, `document_path_similarity`, and `test_document_path_similarity`.*
+
+<br>
+___
+`paraphrases` is a DataFrame which contains the following columns: `Quality`, `D1`, and `D2`.
+
+`Quality` is an indicator variable which indicates if the two documents `D1` and `D2` are paraphrases of one another (1 for paraphrase, 0 for not paraphrase).
+
+
+___
+
+### most_similar_docs
+
+Using `document_path_similarity`, find the pair of documents in paraphrases which has the maximum similarity score.
+
+*This function should return a tuple `(D1, D2, similarity_score)`*
+
+
+### label_accuracy
+
+Provide labels for the twenty pairs of documents by computing the similarity for each pair using `document_path_similarity`. Let the classifier rule be that if the score is greater than 0.75, label is paraphrase (1), else label is not paraphrase (0). Report accuracy of the classifier using scikit-learn's accuracy_score.
+
+*This function should return a float.*
