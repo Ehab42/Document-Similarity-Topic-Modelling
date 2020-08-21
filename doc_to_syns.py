@@ -23,25 +23,20 @@ def doc_to_synsets(doc):
     # First: tokenize the document
     tokens = nltk.word_tokenize(doc)
 
-    # Lemmatize tokens
-    WNlemma = nltk.WordNetLemmatizer()
-    tokens = [WNlemma.lemmatize(t) for t in tokens]
-
     # Second: Part of speech tag the document
     tags = nltk.pos_tag(tokens)
+    # print(tags)
     tags_converted = [convert_tag(tag[1]) for tag in tags]
 
     # Combine both tokens and tags
     token_tags_combination = zip(tokens, tags_converted)
-    # Skip tokens with unknown tags
-    token_tags_combination = [(w, t) for (w, t) in token_tags_combination]
-    print(token_tags_combination)
 
     # Then finds the first synset for each word/tag combination
     synsets = []
     for (token, tag) in token_tags_combination:
         try:
-            synset = wn.synset('{}.{}.01'.format(token, tag))
+            # synset = wn.synset('{}.{}.01'.format(token, tag))
+            synset = wn.synsets(token, tag)[0]
         except:
             pass
         else:
